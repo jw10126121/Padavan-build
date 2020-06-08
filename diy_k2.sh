@@ -23,3 +23,4 @@ sed -i "s/BOARD_PID \"_GUEST_5G_%s\"/\"ljwAP_5G_GUEST\"/g" $diy_file
 
 sed -i "s/1234567890/12356789/g" $diy_file
 
+

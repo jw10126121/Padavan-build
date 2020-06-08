@@ -8,8 +8,7 @@
 
 # package_root='package'
 
-# diy_file="trunk/user/shared/defaults.h"
-diy_file="defaults.h"
+diy_file="trunk/user/shared/defaults.h"
 
 
 # 设置网段

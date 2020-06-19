@@ -38,7 +38,7 @@ jobs:
         pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget
     - name: Clone source code
       run: |
-        git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
+        git clone --depth=1 https://github.com/chongshengB/rt-n56u.git /opt/rt-n56u
         cd /opt/rt-n56u/toolchain-mipsel
         sh dl_toolchain.sh
         mkdir -p /opt/images/
@@ -71,9 +71,9 @@ jobs:
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SSSERVER/d' .config #删除配置项SS server
         sed -i '/CONFIG_FIRMWARE_INCLUDE_DNSFORWARDER/d' .config #删除配置项DNSFORWARDER
         sed -i '/CONFIG_FIRMWARE_INCLUDE_ADBYBY/d' .config #删除配置项adbyby plus+
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_FRPC/d' .config #删除配置项FRPC
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_FRPS/d' .config #删除配置项FRPS
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_TUNSAFE/d' .config #删除配置项TUNSAFE
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_FRPC/d' .config #删除配置项adbyby plus+
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_FRPS/d' .config #删除配置项adbyby plus+
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_TUNSAFE/d' .config #删除配置项adbyby plus+
         sed -i '/CONFIG_FIRMWARE_INCLUDE_ALIDDNS/d' .config #删除配置项阿里DDNS
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SMARTDNS/d' .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SRELAY/d' .config
@@ -104,20 +104,6 @@ jobs:
         # echo "CONFIG_FIRMWARE_INCLUDE_WYY=y" >> .config #网易云解锁
         # echo "CONFIG_FIRMWARE_INCLUDE_WYYBIN=n" >> .config #网易云解锁GO版本执行文件（4M多）注意固件超大小,不集成会自动下载
         # echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >> .config #zerotier ~1.3M
-
-        ################################################################################################
-        #用户自定义配置
-        ################################################################################################
-
-        ### 2.4G驱动
-        ### 2.7 = MT7620 v2.7.2.0
-        ### 3.0 = MT7620 v3.0.4.0
-        # sed -i '/CONFIG_FIRMWARE_WIFI2_DRIVER/d' .config
-        # CONFIG_FIRMWARE_WIFI2_DRIVER=2.7
-
-        ### 去除跟USB相关的配置
-        
-
         #########################################################################################
         #自定义添加其它功能请参考源码configs/templates/目录下的config文件。按照上面的格式添加即可
         #格式如下：

@@ -11,6 +11,7 @@
 diy_file="user/shared/defaults.h"
 
 
+
 # 设置网段
 sed -i 's/192.168.2./192.168.0./g' $diy_file
 

@@ -109,14 +109,25 @@ jobs:
         #用户自定义配置
         ################################################################################################
 
-        ### 2.4G驱动
-        ### 2.7 = MT7620 v2.7.2.0
-        ### 3.0 = MT7620 v3.0.4.0
-        # sed -i '/CONFIG_FIRMWARE_WIFI2_DRIVER/d' .config
-        # CONFIG_FIRMWARE_WIFI2_DRIVER=2.7
 
-        ### 去除跟USB相关的配置
+        ### 修改USB配置(默认禁用)
+        # sed -i '/CONFIG_FIRMWARE_ENABLE_USB/d' .config
+        # echo "CONFIG_FIRMWARE_ENABLE_USB=n" >> .config
+        # 关闭USB打印(默认禁用)  
+        # sed -i '/CONFIG_FIRMWARE_INCLUDE_LPRD/d' .config
+        # echo "CONFIG_FIRMWARE_INCLUDE_LPRD=n" >> .config
         
+        ### QOS功能
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_QOS/d' .config
+        echo "CONFIG_FIRMWARE_INCLUDE_QOS=y" >> .config
+
+        ### 修改ARIA2配置(默认禁用)
+        # sed -i '/CONFIG_FIRMWARE_INCLUDE_ARIA/d' .config
+        # sed -i '/CONFIG_FIRMWARE_INCLUDE_ARIA_WEB_CONTROL/d' .config
+        # echo "CONFIG_FIRMWARE_INCLUDE_ARIA=n" >> .config
+        # echo "CONFIG_FIRMWARE_INCLUDE_ARIA_WEB_CONTROL=n" >> .config
+
+
 
         #########################################################################################
         #自定义添加其它功能请参考源码configs/templates/目录下的config文件。按照上面的格式添加即可
@@ -133,3 +144,10 @@ jobs:
       with:
         name: K2_Padavan
         path: /opt/images
+
+
+
+
+
+
+
